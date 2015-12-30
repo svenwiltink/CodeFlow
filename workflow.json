@@ -19,7 +19,7 @@
       "next": "finish",
       "triggers": [
         {
-          "variableName": "testVar",
+          "variableName": "testVar;blaat;jemoeder",
           "value": true,
           "next": "test2"
         }

@@ -57,7 +57,7 @@ class Workflow(object):
             stateClass = getattr(mod, className)
             stateObject = stateClass()
 
-            if isinstance(stateObject, State) :
+            if isinstance(stateObject, State):
                 stateObject.variables = self.variables
                 stateObject.run()
                 self.variables = stateObject.variables
@@ -72,10 +72,15 @@ class Workflow(object):
 
             nextState = None
             for trigger in triggers:
-                varName = trigger['variableName']
                 requiredValue = trigger['value']
+                varNames = trigger['variableName']
+                varNames = varNames.split(';')
 
-                value = self.variables.get(varName)
+                value = self.variables[varNames.pop(0)]
+                for varName in varNames:
+                    value = value[varName]
+                    if value is None:
+                        break
 
                 if value == requiredValue:
                     if nextState is not None:
@@ -102,4 +107,4 @@ class State(object):
 class TestState(State):
 
     def run(self):
-        self.variables['testVar'] = True
+        self.variables['testVar'] = {"blaat": {"jemoeder": True}}
