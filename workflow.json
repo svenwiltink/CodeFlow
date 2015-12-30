@@ -11,6 +11,23 @@
       "type": "run",
       "package": "PyFlow.workflow",
       "class": "TestState",
+      "next": "EvalTest"
+    },
+
+    "EvalTest": {
+      "type": "trigger",
+      "next": "finish",
+      "triggers": [
+        {
+          "variableName": "testVar",
+          "value": true,
+          "next": "test2"
+        }
+      ]
+    },
+
+    "test2": {
+      "type": "empty",
       "next": "finish"
     }
   }
