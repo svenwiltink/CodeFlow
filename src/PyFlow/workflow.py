@@ -102,9 +102,3 @@ class State(object):
 
     def run(self):
         raise RuntimeError("run function not implemented")
-
-
-class TestState(State):
-
-    def run(self):
-        self.variables['testVar'] = {"blaat": {"jemoeder": True}}
