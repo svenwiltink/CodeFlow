@@ -15,7 +15,7 @@ For now the easiest way to install PyFlow is to clone the source and run pip ins
 ### Usage ###
 I have provided an example in the example dir. It is quite straight forward and can be run by the following command:
 ```
-sven@GLaDOS> python example
+sven@GLaDOS ~/downloads/PyFlow> python example
 ```
 
 It will output ```gotta love this magic``` if it reaches the doMagic state and as well as the success value in the last state.
