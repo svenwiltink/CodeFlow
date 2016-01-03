@@ -23,6 +23,3 @@ class TestWorkFlow(unittest.TestCase):
             workflow.run()
             instance.run.assert_called_once_with()
 
-if __name__ == '__main__':
-    unittest.main()
-
