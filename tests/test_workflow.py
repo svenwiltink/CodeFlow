@@ -1,25 +1,28 @@
 import unittest
-from unittest.mock import patch
 from PyFlow.workflow import Workflow, State
 
 
 class TestState(State):
 
+    called = False
+
     def run(self):
-        print("running teststate")
+        assert TestState.called is False
+        TestState.called = True
 
 
 class TestWorkFlow(unittest.TestCase):
 
-    workflow = Workflow.loadFromFile("tests/resources/workflow.json")
+    workflowFile = "tests/resources/workflow.json"
+
+    def createWorkflow(self):
+        return Workflow.loadFromFile(self.workflowFile)
 
     def test_name(self):
-        assert self.workflow.name == 'test'
+        workflow = self.createWorkflow()
+        assert workflow.name == 'test'
 
     def test_run(self):
-        workflow = self.workflow
-        with patch('test_workflow.TestState') as MockClass:
-            instance = MockClass.return_value
-            workflow.run()
-            instance.run.assert_called_once_with()
-
+        workflow = self.createWorkflow()
+        workflow.run()
+        assert TestState.called is True
