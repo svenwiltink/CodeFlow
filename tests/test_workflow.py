@@ -1,5 +1,5 @@
 import unittest
-from PyFlow.workflow import Workflow, State
+from CodeFlow.workflow import Workflow, State
 
 
 class TestState(State):
