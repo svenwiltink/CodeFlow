@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/SvenWiltink/CodeFlow.svg?branch=master)](https://travis-ci.org/SvenWiltink/CodeFlow) [![Coverage Status](https://coveralls.io/repos/SvenWiltink/CodeFlow/badge.svg?branch=master&service=github)](https://coveralls.io/github/SvenWiltink/CodeFlow?branch=master)
 Welcome to PyFlow!
 ===================
 
