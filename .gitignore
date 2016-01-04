@@ -1,9 +1,10 @@
-.idea/
-.cache/
 build/
+.cache/
+.coverage
 dist/
-venv/
-src/CodeFlow.egg-info/
+.idea/
 MANIFEST
 *.pyc
+src/CodeFlow.egg-info/
 src/PyFlow.egg-info
+venv/

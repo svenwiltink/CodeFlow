@@ -7,5 +7,6 @@ setup(name='CodeFlow',
       url='https://github.com/SvenWiltink/PyFlow',
       version='0.0.2',
       packages=find_packages(),
-      package_dir={'': 'src'}
+      package_dir={'': 'src'},
+      test_suite='nose.collector'
       )
