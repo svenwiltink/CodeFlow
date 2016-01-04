@@ -64,7 +64,7 @@ class Workflow(object):
                 nextState = state['next']
                 return nextState
             else:
-                raise RuntimeError("State {} from module {} is not a state object".format(className, packageName))
+                raise TypeError("State {} from module {} is not a state object".format(className, packageName))
 
         elif type == 'trigger':
             default = state['next']
