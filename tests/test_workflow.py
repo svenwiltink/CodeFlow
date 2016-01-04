@@ -44,5 +44,5 @@ class TestWorkFlow(unittest.TestCase):
 
     def test_no_run_method(self):
         workflow = Workflow.loadFromFile("tests/resources/no_run_method_state_workflow.json")
-        with self.assertRaisesRegex(RuntimeError, "run function not implemented"):
+        with self.assertRaisesRegexp(RuntimeError, "run function not implemented"):
             workflow.run()
