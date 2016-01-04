@@ -1,6 +1,8 @@
 import unittest
+import sys
 from CodeFlow.workflow import Workflow, State
 
+ispython3 = sys.version_info >= 2.7
 
 class TestState(State):
 
@@ -44,5 +46,9 @@ class TestWorkFlow(unittest.TestCase):
 
     def test_no_run_method(self):
         workflow = Workflow.loadFromFile("tests/resources/no_run_method_state_workflow.json")
-        with self.assertRaisesRegexp(RuntimeError, "run function not implemented"):
-            workflow.run()
+        if ispython3:
+            with self.assertRaisesRegexp(RuntimeError, "run function not implemented"):
+                workflow.run()
+        else:
+            with self.assertRaisesRegex(RuntimeError, "run function not implemented"):
+                workflow.run()
