@@ -7,7 +7,7 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install 'coverage<4'gi
+  - pip install 'coverage<4'
 script:
   coverage run --source=CodeFlow setup.py test
 
