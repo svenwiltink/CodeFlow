@@ -1,0 +1,17 @@
+{
+  "name":"not_a_state_test",
+  "states": {
+
+    "start": {
+      "type": "empty",
+      "next": "test"
+    },
+
+    "test": {
+      "type": "run",
+      "package": "test_workflow",
+      "class": "NoRunMethodState",
+      "next": "finish"
+    }
+  }
+}
