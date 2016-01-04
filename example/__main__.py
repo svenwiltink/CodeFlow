@@ -1,9 +1,9 @@
 import logging
 import random
 
-from PyFlow.workflow import Workflow, State
+from CodeFlow.workflow import Workflow, State
 
-logger = logging.getLogger('PyFlow')
+logger = logging.getLogger('CodeFlow')
 logger.setLevel(logging.INFO)
 
 logger.info('starting example')

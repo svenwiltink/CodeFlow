@@ -1,3 +1,9 @@
 .idea/
+.cache/
+build/
+dist/
+venv/
+src/CodeFlow.egg-info/
+MANIFEST
 *.pyc
 src/PyFlow.egg-info

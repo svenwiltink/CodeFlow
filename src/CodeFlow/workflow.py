@@ -1,7 +1,7 @@
 import logging
 import json
 
-logger = logging.getLogger('PyFlow')
+logger = logging.getLogger('CodeFlow')
 
 
 class Workflow(object):
