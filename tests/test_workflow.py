@@ -11,6 +11,12 @@ class TestState(State):
         TestState.called = True
 
 
+class NotAState:
+
+    def run(self):
+        pass
+
+
 class TestWorkFlow(unittest.TestCase):
 
     workflowFile = "tests/resources/workflow.json"
@@ -26,3 +32,8 @@ class TestWorkFlow(unittest.TestCase):
         workflow = self.createWorkflow()
         workflow.run()
         assert TestState.called is True
+
+    def test_is_not_state(self):
+        workflow = Workflow.loadFromFile("tests/resources/not_a_state_workflow.json")
+        with self.assertRaises(TypeError):
+            workflow.run()
