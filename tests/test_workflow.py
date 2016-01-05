@@ -55,3 +55,12 @@ class TestWorkFlow(unittest.TestCase):
         else:
             with self.assertRaisesRegexp(RuntimeError, "run function not implemented"):
                 workflow.run()
+
+    def test_unknown_state_type(self):
+        workflow = Workflow.loadFromFile('tests/resources/unknown_type_workflow.json')
+        if ispython3:
+            with self.assertRaisesRegex(RuntimeError, "Unknown state type .*"):
+                workflow.run()
+        else:
+            with self.assertRaisesRegexp(RuntimeError, "Unknown state type .*"):
+                workflow.run()

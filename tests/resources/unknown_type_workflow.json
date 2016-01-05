@@ -1,0 +1,14 @@
+{
+  "name":"unknown type",
+  "states": {
+
+    "start": {
+      "type": "empty",
+      "next": "test"
+    },
+
+    "test": {
+      "type": "this can't be a state type"
+    }
+  }
+}
