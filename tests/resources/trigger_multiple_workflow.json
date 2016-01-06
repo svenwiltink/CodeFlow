@@ -1,47 +1,40 @@
 {
-  "name":"test",
+  "name":"trigger",
   "states": {
 
     "start": {
       "type": "empty",
-      "next": "test"
-    },
-
-    "test": {
-      "type": "run",
-      "package": "__main__",
-      "class": "TestState",
       "next": "triggerTest"
     },
 
     "triggerTest": {
       "type": "trigger",
-      "next": "printResult",
+      "next": "finish",
       "triggers": [
         {
           "variableName": "success",
           "value": true,
-          "next": "doMagic"
+          "next": "triggertrue"
         },
         {
           "variableName": "success",
           "value": true,
-          "next": "doMagic"
+          "next": "triggerfalse"
         }
       ]
     },
 
-    "doMagic": {
+    "triggertrue": {
       "type": "run",
-      "package": "__main__",
-      "class": "DoMagicState",
-      "next": "printResult"
+      "package":"test_workflow",
+      "class":"TriggerTrueState",
+      "next": "finish"
     },
 
-    "printResult": {
+    "triggerfalse": {
       "type": "run",
-      "package": "__main__",
-      "class": "PrintResultState",
+      "package":"test_workflow",
+      "class":"TriggerFalseState",
       "next": "finish"
     }
   }
