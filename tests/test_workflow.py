@@ -143,7 +143,7 @@ class TestWorkFlow(unittest.TestCase):
 
     def test_trigger_recursive_unset(self):
         workflow = Workflow.loadFromFile('tests/resources/trigger_recursive_variable_workflow.json')
-        workflow.variables['success'] = True
+        workflow.variables['recursive'] = {'variable': {}}
 
         TriggerTrueState.called = False
         TriggerFalseState.called = False
