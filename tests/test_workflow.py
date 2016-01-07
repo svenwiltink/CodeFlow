@@ -112,16 +112,20 @@ class TestWorkFlow(unittest.TestCase):
         workflow = Workflow.loadFromFile('tests/resources/trigger_multiple_workflow.json')
         workflow.variables['success'] = True
 
-        TriggerTrueState.called = False
-        TriggerFalseState.called = False
-
         if ispython3:
             with self.assertRaisesRegex(RuntimeError, "A workflow could transition to multiple states"):
                 workflow.run()
-                assert TriggerFalseState.called is True
-                assert TriggerTrueState.called is True
         else:
             with self.assertRaisesRegexp(RuntimeError, "A workflow could transition to multiple states"):
                 workflow.run()
-                assert TriggerFalseState.called is True
-                assert TriggerTrueState.called is True
+
+    def test_trigger_multiple_same(self):
+        workflow = Workflow.loadFromFile('tests/resources/trigger_multiple_same_workflow.json')
+        workflow.variables['success'] = True
+
+        TriggerTrueState.called = False
+        TriggerFalseState.called = False
+        workflow.run()
+
+        assert TriggerTrueState.called is True
+        assert TriggerFalseState.called is False
