@@ -22,11 +22,6 @@
           "variableName": "success",
           "value": true,
           "next": "doMagic"
-        },
-        {
-          "variableName": "success",
-          "value": true,
-          "next": "doMagic"
         }
       ]
     },
