@@ -156,7 +156,6 @@ class TestWorkFlow(unittest.TestCase):
         workflow = Workflow.loadFromFile('tests/resources/trigger_recursive_variable_none_workflow.json')
         workflow.variables['recursive'] = {'variable': {'check': None}}
 
-        assert workflow.variables['recursive']['variable']['check'] is None
         TriggerTrueState.called = False
         TriggerFalseState.called = False
         workflow.run()
