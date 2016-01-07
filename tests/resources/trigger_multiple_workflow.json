@@ -19,6 +19,11 @@
         {
           "variableName": "success",
           "value": true,
+          "next": "triggertrue"
+        },
+        {
+          "variableName": "success",
+          "value": true,
           "next": "triggerfalse"
         }
       ]

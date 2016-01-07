@@ -128,4 +128,4 @@ class TestWorkFlow(unittest.TestCase):
         workflow.run()
 
         assert TriggerTrueState.called is True
-        assert TriggerFalseState.called is True
+        assert TriggerFalseState.called is False

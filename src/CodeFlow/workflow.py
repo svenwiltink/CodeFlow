@@ -83,7 +83,7 @@ class Workflow(object):
                         break
 
                 if value == requiredValue:
-                    if nextState is not None:
+                    if nextState is not None and nextState != trigger['next']:
                         raise RuntimeError("A workflow could transition to multiple states")
                     nextState = trigger['next']
 
