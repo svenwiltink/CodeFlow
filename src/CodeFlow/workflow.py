@@ -27,6 +27,7 @@ class Workflow(object):
         instance = Workflow()
         instance.name = name
         instance.states = states
+        instance.variables = {}
 
         return instance
 
@@ -76,13 +77,17 @@ class Workflow(object):
                 varNames = trigger['variableName']
                 varNames = varNames.split(';')
 
-                value = self.variables[varNames.pop(0)]
+                value = self.variables
+                ignoreValue = False
+
                 for varName in varNames:
-                    value = value[varName]
-                    if value is None:
+                    if varName in value:
+                        value = value.get(varName)
+                    else:
+                        ignoreValue = True
                         break
 
-                if value == requiredValue:
+                if ignoreValue == False and value == requiredValue:
                     if nextState is not None and nextState != trigger['next']:
                         raise RuntimeError("A workflow could transition to multiple states")
                     nextState = trigger['next']
