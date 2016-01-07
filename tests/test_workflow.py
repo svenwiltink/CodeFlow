@@ -140,3 +140,26 @@ class TestWorkFlow(unittest.TestCase):
 
         assert TriggerTrueState.called is True
         assert TriggerFalseState.called is False
+
+    def test_trigger_recursive_unset(self):
+        workflow = Workflow.loadFromFile('tests/resources/trigger_recursive_variable_workflow.json')
+        workflow.variables['success'] = True
+
+        TriggerTrueState.called = False
+        TriggerFalseState.called = False
+        workflow.run()
+
+        assert TriggerTrueState.called is False
+        assert TriggerFalseState.called is True
+
+    def test_trigger_recursive_empty(self):
+        workflow = Workflow.loadFromFile('tests/resources/trigger_recursive_variable_none_workflow.json')
+        workflow.variables['recursive'] = {'variable': {'check': None}}
+
+        assert workflow.variables['recursive']['variable']['check'] is None
+        TriggerTrueState.called = False
+        TriggerFalseState.called = False
+        workflow.run()
+
+        assert TriggerTrueState.called is True
+        assert TriggerFalseState.called is False

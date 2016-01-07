@@ -77,12 +77,15 @@ class Workflow(object):
                 varNames = varNames.split(';')
 
                 value = self.variables[varNames.pop(0)]
+                ignoreValue = False
                 for varName in varNames:
-                    value = value[varName]
                     if value is None:
+                        ignoreValue = True
                         break
 
-                if value == requiredValue:
+                    value = value[varName]
+
+                if ignoreValue == False and value == requiredValue:
                     if nextState is not None and nextState != trigger['next']:
                         raise RuntimeError("A workflow could transition to multiple states")
                     nextState = trigger['next']
