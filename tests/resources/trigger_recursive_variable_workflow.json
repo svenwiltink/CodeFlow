@@ -1,0 +1,36 @@
+{
+  "name":"trigger",
+  "states": {
+
+    "start": {
+      "type": "empty",
+      "next": "triggerTest"
+    },
+
+    "triggerTest": {
+      "type": "trigger",
+      "next": "triggerfalse",
+      "triggers": [
+        {
+          "variableName": "recursive;variable;check",
+          "value": true,
+          "next": "triggertrue"
+        }
+      ]
+    },
+
+    "triggertrue": {
+      "type": "run",
+      "package":"test_workflow",
+      "class":"TriggerTrueState",
+      "next": "finish"
+    },
+
+    "triggerfalse": {
+      "type": "run",
+      "package":"test_workflow",
+      "class":"TriggerFalseState",
+      "next": "finish"
+    }
+  }
+}
