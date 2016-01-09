@@ -1,5 +1,7 @@
 import logging
 import json
+import time
+import subprocess
 
 logger = logging.getLogger('CodeFlow')
 
@@ -94,6 +96,18 @@ class Workflow(object):
 
             if nextState is None:
                 nextState = default
+
+            return nextState
+
+        elif type == 'sleep':
+            nextState = state['next']
+            time.sleep(state['sleepTime'])
+
+            return nextState
+
+        elif type == 'exec':
+            nextState = state['next']
+            subprocess.call(state['command'])
 
             return nextState
 
